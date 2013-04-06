@@ -11,5 +11,6 @@ create table Participants (
 );
 create table Winners(
 	id INTEGER PRIMARY KEY,
-	name VARCHAR(64)
+	name VARCHAR(64),
+	game INTEGER
 );

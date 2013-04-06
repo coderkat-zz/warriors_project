@@ -3,11 +3,12 @@
 {% block content %}
 
 
-<h2 class="centered-title">Winner:</h2>
+<h2 class="centered-title">Winner for Game {{ game }}:</h2>
 <h2 class="centered-title"> {{ winner_name }}</h2>
 
 <form class="text-center" action="{{ url_for('save_winner') }}" method="post">
 	<input type="hidden" name="winner" value="{{ winner_name }}">
+	<input type="hidden" name="game" value="{{ game }}">
 	<button  class="btn-large" type="submit" value="Save winner">Save as Winner</button>
 	</form>
 

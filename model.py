@@ -79,10 +79,10 @@ def get_participants(db):
 
 	return None
 
-def new_winner(db, name):
+def new_winner(db, name, game):
 	c = db.cursor()
-	query = """INSERT INTO Winners VALUES (NULL, ?)"""
-	result = c.execute(query, (name, ))
+	query = """INSERT INTO Winners VALUES (NULL, ?, ?)"""
+	result = c.execute(query, (name, game))
 	db.commit()
 	return result.lastrowid
 
@@ -94,7 +94,7 @@ def get_winners(db):
 	rows = c.fetchall()
 
 	if rows:
-		fields = ['id', 'name']
+		fields = ['id', 'name', 'game']
 		winners = []
 		for row in rows:
 			winner = dict(zip(fields, row))

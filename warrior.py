@@ -64,14 +64,31 @@ def draw():
 	# randomly select a name from the list
 	winner = drawing_list[random.randint(0, len(drawing_list)-1)]
 
-	return render_template("accept_winner.html", winner_name=winner)
+	return render_template("accept_winner.html", winner_name=winner, game=1)
+
+@app.route("/game_2")
+def game_2():
+	participants = model.get_participants(g.db) #returns dict of participants # their # of entries
+	drawing_list = []
+	for person in participants: # for each dictionary item (participant)
+		for i in range(person['chances']): # as many times as they have 'chances':
+			drawing_list.append(person['name']) # makes just a huge list of names, repeated as many times as they have chances to win
+
+	random.shuffle(drawing_list)
+
+	# randomly select a name from the list
+	winner = drawing_list[random.randint(0, len(drawing_list)-1)]
+
+	return render_template("accept_winner.html", winner_name=winner, game=2)
 
 @app.route("/save_winner", methods=["POST"])
 def save_winner():
 	# grab winner name from form on draw page
 	winner_name = request.form['winner']
+	winner_game = int(request.form['game'])
+	print winner_game
 	# call model and add winner to Winners table
-	model.new_winner(g.db, winner_name)
+	model.new_winner(g.db, winner_name, winner_game)
 	# call model, remove one chance from participant
 	model.update_participant(g.db, winner_name)
 
