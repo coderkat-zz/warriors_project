@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+	<h1>Welcome to Mediasmith's Warriors Playoff Picker!</h1>
+
+	<a href="{{ url_for('login') }}">Log In</a><br />
+	<a href="{{ url_for('winners') }}">View Winners</a><br />
+
+
+{% endblock %}

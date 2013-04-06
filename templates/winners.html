@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2 class="centered-title">Warriors Playoffs Winners:</h2>
+{% for winner in winners %}
+<h2 class="centered-title">Game {{ winner.id }}: {{ winner.name}}</h2>
+{% endfor %}
+
+{% endblock %}
