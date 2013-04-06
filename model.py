@@ -26,25 +26,18 @@ def get_user(db, user_id):
     c = db.cursor()
     user_id = str(user_id)
     query = """SELECT * FROM Users WHERE id = ?"""
-    c.execute(query, (user_id))
+    c.execute(query, (user_id, ))
     row = c.fetchone()
     if row:
-        fields = ['id', 'email', 'password', 'first_name', 'last_name']
+        fields = ['id', 'email', 'password', 'name']
         return dict(zip(fields, row))
 
     return None
 
-def new_participant(db, name, chances):
-	c = db.cursor()
-	query = """INSERT INTO Participants VALUES (NULL, ?, ?)"""
-	result = c.execute(query, (email, password, name))
-	db.commit()
-	return result.lastrowid
-
 def get_participant(db, name):
 	c = db.cursor()
 	query = """SELECT * FROM Participants WHERE name=?"""
-	c.execute(query, (name))
+	c.execute(query, (name, ))
 	row = c.fetchone()
 	if row:
 		fields = ['id', 'name', 'chances']
@@ -52,19 +45,29 @@ def get_participant(db, name):
 
 	return None
 
+def new_participant(db, name, chances):
+	c = db.cursor()
+	query = """INSERT INTO Participants VALUES (NULL, ?, ?)"""
+	result = c.execute(query, (name, chances))
+	db.commit()
+	return result.lastrowid
+
+
+
 def update_participant(db, name):
 	c = db.cursor()
 	query = """UPDATE Participants SET chances=(chances-1) WHERE name=?"""
-	result = c.execute(query, (chances, name))
+	result = c.execute(query, (name, ))
 	db.commit()
 	return
 
 def get_participants(db):
 	c = db.cursor()
+
 	query = """SELECT * from Participants"""
 	c.execute(query)
 
-	rows = c.fetchall
+	rows = c.fetchall()
 
 	if rows:
 		fields = ['id', 'name', 'chances']
@@ -79,7 +82,7 @@ def get_participants(db):
 def new_winner(db, name):
 	c = db.cursor()
 	query = """INSERT INTO Winners VALUES (NULL, ?)"""
-	result = c.execute(query, (name))
+	result = c.execute(query, (name, ))
 	db.commit()
 	return result.lastrowid
 
@@ -88,7 +91,7 @@ def get_winners(db):
 	query = """SELECT * from Winners"""
 	c.execute(query)
 
-	rows = c.fetchall
+	rows = c.fetchall()
 
 	if rows:
 		fields = ['id', 'name']

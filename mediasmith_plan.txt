@@ -1,0 +1,60 @@
+goal is to make an uneven playing field fair. A group of us share Warriors tickets. The number of games each person has differs. For the playoffs, we have two pair of tickets for each game so there will be two winners each time.
+ 
+The plan is the equivalent of ping pong balls in the hopper.
+Two pairs per game.
+Once the first pair is picked, that ping pong ball no longer exists and there are fewer balls in there.
+e.g., if Cate is drawn, he never gets another chance.
+
+ 
+Gary      18
+Smith     15
+Art       15
+Ken        9
+Steve Dinetz     9
+Steve Neely      6
+Jay              4
+Gilbert          3
+Stein            2
+Cate             1
+
+------------------------
+
+SEEDING:
+sqlite3 lottery.db < schema.sql
+python seed.py
+
+------------------------------
+
+
+a win takes that 'buy-in' out of the game
+a winner can be re-chosen (if not available for the game)
+the same person can't win both sets of ticket
+_____________________________
+
+sign-in page for Dave
+[optional: change entries]
+draw for the first game (save winners)
+draw another game (save winners)
+draw another game (save winners)
+...et cetera...
+Page of all winners til now and what games they have won?
+________________________________
+
+DB:
+
+User:
+	id: 1
+	name: Dave Smith
+	email: smith@mediasmith.com
+	password: warriors123
+
+Participants:
+	id: 
+	name:
+	chances:
+
+Winners:
+	id:
+	name:
+
+
