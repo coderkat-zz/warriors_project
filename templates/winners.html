@@ -3,8 +3,16 @@
 {% block content %}
 
 <h2 class="centered-title">Warriors Playoffs Winners:</h2>
-{% for winner in winners %}
-<h2 class="centered-title">Game {{ winner.game }}: {{ winner.name}}</h2>
-{% endfor %}
+
+
+<h2 class="centered-title">Game 1: {{ winners.Game1[0] }} & {{ winners.Game1[1] }}</h2>
+
+
+<h2 class="centered-title">Game 2: {{ winners.Game2[0] }} & {{ winners.Game2[1] }}</h2>
+
+
+<h2 class="centered-title">Game 3: {{ winners.Game3[0] }} & {{ winners.Game3[1] }}</h2>
+
+
 
 {% endblock %}

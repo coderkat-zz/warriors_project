@@ -14,7 +14,8 @@
 
 <h2 class="centered-title"> {{ winner_name }} can't make the game?</h2>
 
-<form class="text-center" action="/drawing" method="get">
+<form class="text-center" action="{{ url_for('draw_again') }}" method="post">
+	<input type="hidden" name="game" value="{{ game }}">	
 	<button  class="btn-large" type="submit" value="Submit">Put {{ winner_name }} back in and draw again!</button>
 	</form>
 

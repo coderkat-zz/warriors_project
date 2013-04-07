@@ -3,17 +3,34 @@
 {% block content %}
 
 <h1 class="text-center"><strong>Draw Again?</strong></h1>
-<h1 class="text-center"><strong>Game 1</strong></h1>
 
-	<form class="text-center" action="/draw" method="get">
-		<button  class="btn-large" type="submit" value="Submit">Random Drawing!</button>
+<h1 class="text-center"><strong>Draw for Game 1</strong></h1>
+<h3 class="text-center">{{ game1 }} already drawn</h3>
+
+{% if (game1 < 2) %}
+	<form class="text-center" action="/game_1" method="get">
+		<button  class="btn-large" type="submit" value="Submit">Draw</button>
 	</form>
+{% endif %}
+
 
 <h1 class="text-center"><strong>Draw for Game 2</strong></h1>
+<h3 class="text-center">{{ game2 }} already drawn</h3>
+
+{% if (game2 < 2) %}
 	<form class="text-center" action="/game_2" method="get">
 		<button  class="btn-large" type="submit" value="Submit">Draw</button>
 	</form>
+{% endif %}
 
+<h1 class="text-center"><strong>Draw for Game 3</strong></h1>
+<h3 class="text-center">{{ game3 }} already drawn</h3>
+
+{% if (game3 < 2) %}
+	<form class="text-center" action="/game_3" method="get">
+		<button  class="btn-large" type="submit" value="Submit">Draw</button>
+	</form>
+{% endif %}
 
 <h1 class="text-center"><strong>No more to draw?? See all winners!</strong></h1>
 

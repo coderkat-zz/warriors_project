@@ -3,9 +3,10 @@
 {% block content %}
 
 <h1 class="text-center"><strong>Ready to Draw?</strong></h1>
-<h1 class="text-center"><strong>Game 1</strong></h1>
-
-	<form class="text-center" action="/draw" method="get">
+<h1 class="text-center"><strong>Game {{ game }} </strong></h1>
+	<!-- TODO: figure out how to carry over game number to the /draw view -->
+	<form class="text-center" action="/draw" method="post">
+		<input type="hidden" name="game" value="{{ game }}">
 		<button  class="btn-large" type="submit" value="Submit">Random Drawing!</button>
 	</form>
 
