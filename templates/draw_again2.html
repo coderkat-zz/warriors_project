@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1 class="text-center" style = "margin:20px;"><strong>Draw Again?</strong></h1>
+
+
+{% for i in chosen_games %}
+
+<!-- <div class="row"> -->
+<div class="span3">
+	<div class="row-fluid">
+<h2 class="text-center"><strong>Game {{ i }}</strong></h2>
+<h3 class="text-center">{{ chosen_games[i] }} drawn</h3>
+
+{% if (chosen_games[i] < 2) %}
+	<form class="text-center" action="/drawing" method="get">
+		<input type="hidden" name="game" value="{{ i }}">
+		<button  class="btn-large" type="submit" value="Submit">Draw</button>
+	</form>
+{% endif %}
+</div>
+
+</div>
+
+{% endfor %}
+
+
+
+<div class="row">
+	<div class="span12">
+
+<h1 class="text-center"><strong>No more to draw? See all winners!</strong></h1>
+
+	<form class="text-center" action="/winners" method="get">
+		<button  class="btn-large" type="submit" value="Submit">Winners!</button>
+	</form>
+</div>
+</div>
+{% endblock %}

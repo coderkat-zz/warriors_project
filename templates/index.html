@@ -2,10 +2,17 @@
 {% block title %}Homepage{% endblock %}
 
 {% block content %}
-	<h1>Welcome to Mediasmith's Warriors Playoff Picker!</h1>
+	
+	
+	<h1 class="text-center" style = "margin:12px;">Welcome to Mediasmith's<br />Warriors Playoff Picker!</h1>
 
-	<a href="{{ url_for('login') }}">Log In</a><br />
-	<a href="{{ url_for('winners') }}">View Winners</a><br />
+	<form class="text-center" action="{{ url_for('login') }}" method="get">
+		<button class="btn-large" style = "margin:12px;" type="submit" value="Submit">Log in</button><br />
+	</form>
+
+	<form class="text-center" action="{{ url_for('winners') }}" method="get">
+		<button class="btn-large" type="submit" value="Submit">View Winners</button>
+	</form>
 
 
 {% endblock %}

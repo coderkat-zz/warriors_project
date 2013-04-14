@@ -9,8 +9,8 @@
 {% for i in winners %}
 <!-- check to see if there are names in the value field (only display chosen games)-->
 
-<div class="span3">
-<div class="row-fluid">
+<div class="span4">
+<div class="row">
 
 {% if winners[i] %}
 
@@ -30,13 +30,13 @@
 {% endfor %}
 
 
-
-<div class="row-fluid">
+<div class="row">
 	<div class="span12">
 
 <h1 class="text-center"><strong>Need to draw for another game?</strong></h1>
 
-	<form class="text-center" action="/draw_again" method="get">
+
+	<form class="text-center" action="/drawing" method="get">
 		<input type="hidden" name="game" value="{{ next_game }}">
 		<button  class="btn-large" type="submit" value="Submit">Draw</button>
 	</form>

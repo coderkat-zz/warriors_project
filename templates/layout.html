@@ -1,13 +1,15 @@
 <html>
+
 <head>
 	{% block head %}
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="css/bootstrap.css") }}">
+	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.css">
 	<title>Playoff Ticket Picker{% block title %}{% endblock %}</title>
 	{% endblock %}
 </head>
 
 <body>
 
+  <div class="hackcontainer">
 	<div class="navbar">
 		<div class="navbar-inner">
 			<a class="brand" href="#"></a>
@@ -15,20 +17,23 @@
 				<li><a href="{{ url_for('login') }}">Log In</a></li>
 				<li><a href="{{ url_for('logout') }}">Log Out</a></li>
 				<li><a href="{{ url_for('winners') }}">Winners</a></li>
-			</ul>
+<!-- 				{% if session['email'] %}
+				<li class="brand">You are currently signed in as: {{ session['email'] }}.</li> -->
+				{% endif %}
+  			</ul>
 		</div>
 	</div>
 
 	{% with messages = get_flashed_messages() %}
 		{% if messages %}
 			{% for message in messages %}
-				<strong><font color="red">{{ message }}</font></strong>
+				<strong ><font color="red">{{ message }}</font></strong>
 			{% endfor %}
 		{% endif %}
 	{% endwith %}
 
 
 	{% block content %}{% endblock %}
-
+</div>
 </body>
 </html>
