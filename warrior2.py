@@ -85,10 +85,16 @@ def save_winner():
 				return render_template("drawing.html", game=winner_game)
 
 	# add winner to Winners table
-	winner = Winners(game=winner_game, participant_id=winner.id)
-	db_session.add(winner)
+	win = Winners(game=winner_game, participant_id=winner.id)
+	db_session.add(win)
 	db_session.commit()
 
+
+	# remove one chance from participant's chances
+	winner.chances = winner.chances - 1
+	db_session.commit()
+
+	# grab which games have been chosen for next page view
 	new_winners = db_session.query(Winners).all()
 	games_won = []
 	for winner in new_winners:
