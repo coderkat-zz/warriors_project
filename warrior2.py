@@ -3,11 +3,12 @@ import model2 as model
 import random
 from model2 import session as db_session, Users, Participants, Winners
 import os
-from flask.ext.sqlalchemy import SQLAlchemy 
+from flask.ext.sqlalchemy import SQLAlchemy  
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
+
 
 app.secret_key = "bananabananabanana"
 
