@@ -26,6 +26,21 @@ SEEDING:
 sqlite3 lottery.db < schema.sql
 python seed.py
 
+TO ADD (IF TIME):
+
+__ ability to clear picks
+
+__ match login with db
+
+__ allow user to populate db of participants
+
+_X_if user won 1st pick of game, he CANNOT win next pick
+
+_X_only display games that have 2 winners already chosen
+
+_X_on draw_again.html, display number of winners already selected above the button
+
+
 ------------------------------
 
 

@@ -2,8 +2,13 @@ from flask import Flask, render_template, redirect, request, session, g, flash, 
 import model2 as model
 import random
 from model2 import session as db_session, Users, Participants, Winners
+import os
+from flask.ext.sqlalchemy import SQLAlchemy 
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+db = SQLAlchemy(app)
+
 app.secret_key = "bananabananabanana"
 
 @app.teardown_request
