@@ -9,7 +9,7 @@
 
 <!-- <div class="row"> -->
 <div class="span3">
-	<div class="row-fluid">
+	<div class="row">
 <h2 class="text-center"><strong>Game {{ i }}</strong></h2>
 <h3 class="text-center">{{ chosen_games[i] }} drawn</h3>
 
@@ -26,15 +26,18 @@
 {% endfor %}
 
 
-
+<div class="hackcontainer">
 <div class="row">
 	<div class="span12">
+
 
 <h1 class="text-center"><strong>No more to draw? See all winners!</strong></h1>
 
 	<form class="text-center" action="/winners" method="get">
 		<button  class="btn-large" type="submit" value="Submit">Winners!</button>
 	</form>
+
+</div>
 </div>
 </div>
 {% endblock %}

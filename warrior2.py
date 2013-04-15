@@ -6,6 +6,14 @@ from model2 import session as db_session, Users, Participants, Winners
 app = Flask(__name__)
 app.secret_key = "bananabananabanana"
 
+@app.teardown_request
+def shutdown_session(exception = None):
+    db_session.remove()
+
+@app.before_request
+def load_user_id():
+    g.user_id = session.get('user_id')
+
 @app.route("/")
 def index():
 	return render_template("index.html")
@@ -37,7 +45,12 @@ def logout():
 
 @app.route("/drawing")
 def drawing():
+	if not g.user_id:
+		flash("Please log in")
+		return redirect(url_for("index"))
+
 	games_won = db_session.query(Winners).all()
+	
 	if not games_won:
 		next_game = 1
 	else:
@@ -51,6 +64,9 @@ def drawing():
 # TODO: Figure out how to get the game number in here!
 @app.route("/draw", methods=["GET", "POST"])
 def draw():
+	if not g.user_id:
+		flash("Please log in")
+		return redirect(url_for("index"))
 
 	game = request.form['game']
 
@@ -107,10 +123,11 @@ def save_winner():
 
 @app.route("/draw_again", methods=['POST', 'GET'])
 def draw_again():
-	print 'what the fuuuuck'
+	if not g.user_id:
+		flash("Please log in")
+		return redirect(url_for("index"))
+
 	test = request.form["game"]
-	print 'testing?'
-	print test
 	return render_template("drawing.html", game=test)
 
 @app.route("/winners", methods=["GET"])

@@ -9,7 +9,7 @@
 
 <body>
 
-  <div class="hackcontainer">
+
 	<div class="navbar">
 		<div class="navbar-inner">
 			<a class="brand" href="#"></a>
@@ -19,21 +19,28 @@
 				<li><a href="{{ url_for('winners') }}">Winners</a></li>
 <!-- 				{% if session['email'] %}
 				<li class="brand">You are currently signed in as: {{ session['email'] }}.</li> -->
-				{% endif %}
+				<!-- {% endif %} -->
   			</ul>
 		</div>
 	</div>
 
-	{% with messages = get_flashed_messages() %}
-		{% if messages %}
-			{% for message in messages %}
-				<strong ><font color="red">{{ message }}</font></strong>
-			{% endfor %}
-		{% endif %}
-	{% endwith %}
+	<div class="hackcontainer">
+		<div class="row">
+		
 
 
-	{% block content %}{% endblock %}
-</div>
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					{% for message in messages %}
+						<strong ><font color="red">{{ message }}</font></strong>
+					{% endfor %}
+				{% endif %}
+			{% endwith %}
+
+
+			{% block content %}{% endblock %}
+
+		</div>
+	</div>
 </body>
 </html>

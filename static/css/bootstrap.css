@@ -66,6 +66,7 @@ audio:not([controls]) {
 }
 
 html {
+  height: 100%;
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
@@ -222,12 +223,12 @@ textarea {
 }
 
 body {
+  height: 100%;
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: #ffffff;
-  background-color: #ffffff;
 }
 
 a {
@@ -264,7 +265,6 @@ a:focus {
 }
 
 .row {
-  margin-left: -20px;
   *zoom: 1;
 }
 
@@ -615,6 +615,9 @@ a:focus {
 }
 
 .container {
+  height: 2000px;
+  width: 100%;
+  background-color: blue; 
   margin-right: auto;
   margin-left: auto;
   *zoom: 1;
@@ -4356,7 +4359,6 @@ input[type="submit"].btn.btn-mini {
 .navbar {
   *position: relative;
   *z-index: 2;
-  margin-bottom: 20px;
   overflow: visible;
 }
 
@@ -4589,7 +4591,7 @@ input[type="submit"].btn.btn-mini {
   left: 0;
   display: block;
   float: left;
-  margin: 0 10px 0 0;
+  margin: 0 0 0 0;
 }
 
 .navbar .nav.pull-right {
@@ -6182,8 +6184,9 @@ a.badge:focus {
 }
 
 .hackcontainer {
-height: 100%;
+height: 2500px;
 width: 100%;
+background-color: blue; /* fallback if gradient not supported */
 background-image: linear-gradient(bottom, rgb(0,34,103) 36%, rgb(54,84,150) 68%);
 background-image: -o-linear-gradient(bottom, rgb(0,34,103) 36%, rgb(54,84,150) 68%);
 background-image: -moz-linear-gradient(bottom, rgb(0,34,103) 36%, rgb(54,84,150) 68%);
@@ -6196,5 +6199,7 @@ background-image: -webkit-gradient(
   left top,
   color-stop(0.36, rgb(0,34,103)),
   color-stop(0.68, rgb(54,84,150));
-background-attachment: scroll;
+
+background-repeat: repeat-x;
 }
+
