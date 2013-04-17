@@ -37,16 +37,43 @@ def authenticate():
 	if user:
 		session['user_id'] = user.id
 		flash("Successfully logged in!")
-		return redirect(url_for('drawing'))
+		new_winners = db_session.query(Winners).all()
+		games_won = []
+		for winner in new_winners:
+			games_won.append(winner.game)
+		games_dict = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0, 10:0, 11:0, 12:0, 13:0, 14:0, 15:0, 16:0, 17:0, 18:0}
+		for i in games_won:
+			games_dict[i] += 1
+		return render_template("draw_again2.html", chosen_games=games_dict)
 	else:
 		flash("Incorrect new user name or password")
 		return redirect(url_for('login'))
 
+@app.route("/dashboard", methods=["GET"])
+def dashboard():
+	if not g.user_id:
+		flash("Not logged in!")
+		return redirect(url_for('login'))
+	else:
+		new_winners = db_session.query(Winners).all()
+		games_won = []
+		for winner in new_winners:
+			games_won.append(winner.game)
+		games_dict = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0, 10:0, 11:0, 12:0, 13:0, 14:0, 15:0, 16:0, 17:0, 18:0}
+		for i in games_won:
+			games_dict[i] += 1
+		return render_template("draw_again2.html", chosen_games=games_dict)
+
+
 @app.route("/logout")
 def logout():
-	del session['user_id']
-	flash('You have successfully logged out.')
-	return redirect(url_for("index"))
+	if g.user_id:
+		del session['user_id']
+		flash('You have successfully logged out.')
+		return redirect(url_for("index"))
+	else:
+		flash('You were not logged in.')
+		return redirect(url_for("index"))
 
 @app.route("/drawing")
 def drawing():
