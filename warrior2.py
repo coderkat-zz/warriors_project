@@ -1,9 +1,10 @@
 from flask import Flask, render_template, redirect, request, session, g, flash, url_for
 import model2 as model
 import random
-from model2 import session as db_session, Users, Participants, Winners
 import os
-from flask.ext.heroku import Heroku  
+from model import session as db_session, Users, Participants, Winners
+# from flask.ext.heroku import Heroku
+from flask_heroku import Heroku  
 from flask.ext.sqlalchemy import SQAlchemy 
 
 app = Flask(__name__)
