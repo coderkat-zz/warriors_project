@@ -7,10 +7,8 @@ from flask.ext.heroku import Heroku
 from flask.ext.sqlalchemy import SQAlchemy 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://qjmemhkpwugknr:omhCgYGzrE1ujnW0jVFbVIw_OL@ec2-23-21-161-255.compute-1.amazonaws.com:5432/d42dnj564eksn2'
-db = SQLAlchemy(app)
 heroku = Heroku(app)
-
+app.config.from_object(__name__)
 
 app.secret_key = "bananabananabanana"
 
@@ -183,4 +181,6 @@ def winners():
 		return redirect(url_for("index"))  
 
 if __name__ == "__main__":
+	db_uri = app.config.get('SQLALCHEMY_DATABASE_URI')
+	model.connect(db_uri)
 	app.run(debug = True)
