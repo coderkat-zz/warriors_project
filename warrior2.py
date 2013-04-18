@@ -6,6 +6,7 @@ from model2 import session as db_session, Users, Participants, Winners
 # from flask.ext.heroku import Heroku
 from flask_heroku import Heroku  
 # from flask.ext.sqlalchemy import SQAlchemy 
+import os
 
 app = Flask(__name__)
 heroku = Heroku(app)
@@ -77,7 +78,7 @@ def logout():
 		flash('You were not logged in.')
 		return redirect(url_for("index"))
 
-@app.route("/drawing", methods=["GET"])
+@app.route("/drawing", methods=["GET", "POST"])
 def drawing():
 	if not g.user_id:
 		flash("Please log in")
