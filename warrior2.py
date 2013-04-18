@@ -5,7 +5,7 @@ import os
 from model2 import session as db_session, Users, Participants, Winners
 # from flask.ext.heroku import Heroku
 from flask_heroku import Heroku  
-from flask.ext.sqlalchemy import SQAlchemy 
+# from flask.ext.sqlalchemy import SQAlchemy 
 
 app = Flask(__name__)
 heroku = Heroku(app)
