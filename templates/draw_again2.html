@@ -14,7 +14,7 @@
 <h3 class="text-center">{{ chosen_games[i] }} drawn</h3>
 
 {% if (chosen_games[i] < 2) %}
-	<form class="text-center" action="/drawing" method="get">
+	<form class="text-center" action="/drawing" method="post">
 		<input type="hidden" name="game" value="{{ i }}">
 		<button  class="btn-large" type="submit" value="Submit">Draw</button>
 	</form>
