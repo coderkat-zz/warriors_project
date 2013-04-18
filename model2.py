@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker, scoped_session, relationship, backref
 
 
 # set up the ability to interact with the db w/a session
-engine = create_engine("sqlite:///lottery2.db", echo=False)
+engine = create_engine(os.environ['DATABASE_URL'], echo=False)
 session = scoped_session(sessionmaker(bind=engine, autocommit = False, autoflush = False))
 
 Base = declarative_base() # required for SQLAlchemy's magic to magic

@@ -6,6 +6,7 @@ import os
 from flask.ext.heroku import Heroku  
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 heroku = Heroku(app)
 
 
@@ -75,23 +76,14 @@ def logout():
 		flash('You were not logged in.')
 		return redirect(url_for("index"))
 
-@app.route("/drawing")
+@app.route("/drawing", methods=["GET"])
 def drawing():
 	if not g.user_id:
 		flash("Please log in")
 		return redirect(url_for("index"))
-
-	games_won = db_session.query(Winners).all()
-	
-	if not games_won:
-		next_game = 1
 	else:
-		if len(games_won) % 2 != 0:
-			next_game = games_won[-1].game
-		else:
-			next_game = games_won[-1].game + 1
-
-	return render_template("drawing.html", game=next_game)
+		game = request.form['game']
+		return render_template("drawing.html", game=game)
 
 # TODO: Figure out how to get the game number in here!
 @app.route("/draw", methods=["GET", "POST"])
