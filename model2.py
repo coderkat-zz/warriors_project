@@ -1,7 +1,7 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
 from sqlalchemy.orm import sessionmaker, scoped_session, relationship, backref
-
+import os
 
 
 # set up the ability to interact with the db w/a session
