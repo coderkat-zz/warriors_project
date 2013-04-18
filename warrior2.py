@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, request, session, g, flash, 
 import model2 as model
 import random
 import os
-from model import session as db_session, Users, Participants, Winners
+from model2 import session as db_session, Users, Participants, Winners
 # from flask.ext.heroku import Heroku
 from flask_heroku import Heroku  
 from flask.ext.sqlalchemy import SQAlchemy 
