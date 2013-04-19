@@ -156,7 +156,7 @@ def draw_again():
 	test = request.form["game"]
 	return render_template("drawing.html", game=test)
 
-@app.route("/winners", methods=["GET", "POST"])
+@app.route("/winners", methods=["GET"])
 def winners():
 
 	winners_db = db_session.query(Winners).all() #list of dictionaries of winners
