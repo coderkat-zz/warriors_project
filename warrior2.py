@@ -7,28 +7,34 @@ from model2 import session as db_session, Users, Participants, Winners
 from flask_heroku import Heroku  
 # from flask.ext.sqlalchemy import SQAlchemy 
 import os
+from localsettings import SECRET_KEY
 
 app = Flask(__name__)
 heroku = Heroku(app)
 app.config.from_object(__name__)
 
-app.secret_key = "bananabananabanana"
+app.secret_key = SECRET_KEY
+
 
 @app.teardown_request
 def shutdown_session(exception = None):
     db_session.remove()
 
+
 @app.before_request
 def load_user_id():
     g.user_id = session.get('user_id')
+
 
 @app.route("/")
 def index():
 	return render_template("index.html")
 
+
 @app.route("/login")
 def login():
 	return render_template("login.html")
+
 
 @app.route("/authenticate", methods=["POST"])
 def authenticate():
@@ -183,6 +189,6 @@ def winners():
 		return redirect(url_for("index"))  
 
 if __name__ == "__main__":
-	db_uri = app.config.get('SQLALCHEMY_DATABASE_URI')
-	model.connect(db_uri)
-	app.run(debug = True)
+    db_uri = app.config.get('SQLALCHEMY_DATABASE_URI')
+    model.connect(db_uri)
+    app.run(debug=True)
